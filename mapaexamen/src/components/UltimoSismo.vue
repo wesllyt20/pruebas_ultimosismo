@@ -1,6 +1,6 @@
 <template>
   <div class="container" id="contenedor">
-    <h1 id="titulo">Evento</h1>
+    <h2 id="titulo">Ultimo Sismo</h2>
     <form
       :key="index"
       v-for="(sismo, index) in sismos2"
@@ -48,13 +48,14 @@
 <script>
 import axios from "axios";
 import L from "leaflet";
-import { LMap, LTileLayer, LMarker } from "vue2-leaflet";
+import { LMap, LTileLayer, LMarker, LPopup } from "vue2-leaflet";
 
 export default {
   components: {
     LMap,
     LTileLayer,
     LMarker,
+    LPopup,
   },
   data() {
     return {
@@ -67,15 +68,10 @@ export default {
     };
   },
 
-  // created: function () {
-  //    this.obtenerInformacionID();
-  //   }
   mounted: function () {
-    axios
-      .get("http://localhost/sismos/?consultar=" + this.$route.params.id)
-      .then((r) => {
-        this.sismos2 = r.data;
-      });
+    axios.get("http://localhost/sismos/?ultimo-sismo").then((r) => {
+      this.sismos2 = r.data;
+    });
   },
 
   methods: {
@@ -85,7 +81,6 @@ export default {
   },
 };
 </script>
-
 
 <style>
 #bott {

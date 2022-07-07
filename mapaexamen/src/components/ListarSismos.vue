@@ -1,18 +1,18 @@
 <template>
   <div class="container">
 
-          <router-link to="/crearsismos" class="btn btn-success">Agregar ultimo sismo</router-link>
-    <div class="card">
-      <div class="card-header">SISMOS</div>
-      <div class="card-body">
+          
+    <div class="card mt-4 ">
+      <div class="card-header bg-primary text-white">SISMOS</div>
+      <div class="card-body table-responsive">
         <table class="table">
           <thead>
             <tr>
-              <th>ID</th>
+              <th>#</th>
               <th>Latitud</th>
               <th>Longitud</th>
               <th>Profundidad</th>
-              <th>Intensidad</th>
+              <th>Magnitud</th>
               <th>Referencia</th>
               <th>Acciones</th>
             </tr>
@@ -30,15 +30,8 @@
                   <router-link
                     :to="{ name: 'MapaFinal', params: { id: sismo.id } }"
                     class="btn btn-info"
-                    >Visualizar</router-link
-                  >
-                  <button
-                    type="button"
-                    v-on:click="borrarSismo(sismo.id)"
-                    class="btn btn-danger"
-                  >
-                    Borrar
-                  </button>
+                    >Visualizar</router-link>
+
                 </div>
               </td>
             </tr>
@@ -61,7 +54,6 @@ export default {
       sismos: [],
     };
   },
-
   created: function () {
     this.consultarSismos();
   },
@@ -84,7 +76,7 @@ export default {
         .then((respuesta) => respuesta.json())
         .then((datosRespuesta) => {
           console.log(datosRespuesta);
-          window.location.href = "listarsismos";
+          location.reload();
         })
         .catch(console.log);
     },

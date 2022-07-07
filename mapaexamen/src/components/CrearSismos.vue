@@ -17,7 +17,7 @@
               placeholder=""
             />
             <small id="helpId" class="form-text text-muted"
-              >Escribe la latitud</small
+              >Ingresa la latitud</small
             >
           </div>
 
@@ -33,7 +33,7 @@
               placeholder=""
             />
             <small id="helpId" class="form-text text-muted"
-              >Escribe la longitud</small
+              >Ingresa la longitud</small
             >
           </div>
 
@@ -49,12 +49,12 @@
               placeholder=""
             />
             <small id="helpId" class="form-text text-muted"
-              >Escribe la profundidad</small
+              >Ingresa la profundidad</small
             >
           </div>
 
           <div class="form-group">
-            <label for="intensidad">INTENSIDAD:</label>
+            <label for="intensidad">MAGNITUD:</label>
             <input
               type="text"
               class="form-control"
@@ -65,7 +65,7 @@
               placeholder=""
             />
             <small id="helpId" class="form-text text-muted"
-              >Escribe la intensidad</small
+              >De cuanto fue la magnitud</small
             >
           </div>
 
@@ -81,14 +81,14 @@
               placeholder=""
             />
             <small id="helpId" class="form-text text-muted"
-              >Escribe la referencia</small
+              >Ubicación proxima o cercana del sismo</small
             >
           </div>
 
           <div class="btn-group" role="group" aria-label="">
             <button type="submit" class="btn btn-success">Agregar</button>
 
-            <router-link :to="{ name: 'mapafinal' }" class="btn btn-warning"
+            <router-link :to="{ name: 'listarsismos' }" class="btn btn-warning"
               >Cancelar</router-link
             >
           </div>
@@ -124,7 +124,7 @@ export default {
         .then((respuesta) => respuesta.json())
         .then((datosRespuesta) => {
           console.log(datosRespuesta);
-          window.location.href = "mapafinal";
+          window.location.href = "listarsismos";
         });
     },
   },
@@ -137,7 +137,5 @@ export default {
 .card-header{
     font-weight: bold;
     font-size: x-large;
-    
-
 }
 </style>

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import UltimoSismo from '../components/UltimoSismo.vue'
 import MapaFinal from '../components/MapaFinal.vue'
 import CrearSismos from '../components/CrearSismos.vue'
 import ListarSismos from '../components/ListarSismos.vue'
@@ -11,13 +11,14 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: UltimoSismo
   },
   {
-    path: '/mapafinal/',
+    path: '/mapafinal/:id',
     name: 'MapaFinal',
     component: MapaFinal
   },
+  
   {
     path: '/crearsismos',
     name: 'CrearSismos',
