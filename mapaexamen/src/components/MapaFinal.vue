@@ -1,24 +1,41 @@
 <template>
-  <div class="container">
-    <router-link to="/crearsismos" class="btn btn-success"
-      >Agregar ultimo sismo</router-link
-    >
-    <div class="card-header">ULTIMO SISMO REGISTRADO</div>
-    <form v-on:submit.prevent="actualizarSismo">
-      <h1 class="Intensidad"></h1>
-      <h1 class="Referencia"></h1>
-      <l-map :zoom="zoom" :center="center" style="height: 500px; width: 100%">
-        <l-tile-layer :url="url" :attribution="attribution" />
-        <l-geo-json
-          v-if="show"
-          :geojson="geojson"
-          :options="options"
-          :options-style="styleFunction" 
-        />
-        <l-marker :lat-lng="marker" />
-      </l-map>
-    </form>
+  <div >
+    <div class="container" id="mapa">
+      <router-link to="/crearsismos" class="btn btn-danger"
+        >Agregar ultimo sismo</router-link
+      >
+      <div class="card-header" id="titulo">
+        ULTIMO SISMO REGISTRADO
+        <form v-on:submit.prevent="actualizarSismo">
+          <div>
+            <h1 class="Intensidad" id="inten">{{sismo.intensidad}}</h1>
+          </div>
+          <h1 class="Referencia" id="contenedorrefe">
+            <b id="refeTit">Referencia:</b>
+            <b id="referencia">{{sismo.referencia}}</b>
+          </h1>
+          <l-map
+            :zoom="zoom"
+            :center="center"
+            style="height: 500px; width: 100%"
+          >
+            <l-tile-layer :url="url" :attribution="attribution" />
+            <l-geo-json
+              v-if="show"
+              :geojson="geojson"
+              :options="options"
+              :options-style="styleFunction"
+            />
+            <l-marker :lat-lng="marker" />
+          </l-map>
+        </form>
+      </div>
+    </div>
+<div class="container" id="bott">
+  <h1 class="Intensidad" id="">Latitud:{{sismo.latitud}} | Longitud:{{sismo.longitud}} | Profundidad:{{sismo.profundidad}}</h1> 
+</div>
   </div>
+
 </template>
 
 <script>
@@ -45,14 +62,7 @@ export default {
       attribution:
         '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       marker: latLng(-10.39, -79.24),
-      sismo: {
-        id: String,
-        latitud: String,
-        longitud: String,
-        profundidad: String,
-        intensidad: String,
-        referencia: String,
-      },
+      sismo: {},
     };
   },
   computed: {
@@ -95,8 +105,7 @@ export default {
       "https://rawgit.com/gregoiredavid/france-geojson/master/regions/pays-de-la-loire/communes-pays-de-la-loire.geojson"
     );
     this.obtenerInformacionID();
-    console.log("sismo", this.sismo);
-    console.log("sismo2", this.sismo.intensidad); // test
+
     const data = await response.json();
     this.geojson = data;
     this.loading = false;
@@ -143,8 +152,65 @@ export default {
 </script>
 
 
-
-
-
 <style>
+#bott{
+    align-items: center;
+  text-align: center;
+  margin: 0px auto;
+  padding: 2%;
+  position: relative;
+  top: -15px;
+}
+#mapa {
+  background-color: rgb(7, 214, 52);
+  border-radius: 20px;
+  width: 100%;
+  padding: 25px 10px;
+}
+#inten {
+  border-radius: 50%;
+  background: red;
+  border-color: #fff;
+  color: #fff;
+  border-style: solid;
+  float: left;
+
+  align-items: center;
+  text-align: center;
+  margin: 0px auto;
+  padding: 2%;
+  position: relative;
+  top: -15px;
+}
+#titulo {
+  color: #fff;
+  float: inherit;
+  background-color: rgb(7, 214, 52);
+  margin: auto;
+
+  text-align: center;
+  font-size: xx-large;
+}
+#refeTit {
+  color: #fff;
+  float: left;
+  padding: 0%;
+  text-indent: 10px;
+    font-size: x-large;
+}
+#referencia {
+  font-size: large;
+  color: #fff;
+  font-size: x-large;
+   line-height:190%;
+
+  text-indent: -120px;
+  float: left;
+
+  margin: -1px auto;
+  padding: 2px;
+  line-height: 290%;
+
+  padding: 1%;
+}
 </style>
