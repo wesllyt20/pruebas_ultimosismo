@@ -148,16 +148,5 @@ export default {
   text-indent: 10px;
   font-size: x-large;
 }
-#referencia {
-  font-size: large;
-  color: #fff;
-  font-size: x-large;
-  line-height: 190%;
-  text-indent: -120px;
-  float: left;
-  margin: -1px auto;
-  padding: 2px;
-  line-height: 290%;
-  padding: 1%;
-}
+
 </style>
