@@ -88,7 +88,7 @@
           <div class="btn-group" role="group" aria-label="">
             <button type="submit" class="btn btn-success">Agregar</button>
 
-            <router-link :to="{ name: 'listarsismos' }" class="btn btn-warning"
+            <router-link :to="{ name: 'ListarSismos' }" class="btn btn-warning"
               >Cancelar</router-link
             >
           </div>

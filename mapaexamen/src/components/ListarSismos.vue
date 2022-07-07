@@ -1,8 +1,6 @@
 <template>
   <div class="container">
-
-          
-    <div class="card mt-4 ">
+    <div class="card mt-4">
       <div class="card-header bg-primary text-white">SISMOS</div>
       <div class="card-body table-responsive">
         <table class="table">
@@ -18,8 +16,8 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="sismo in sismos" :key="sismo.id">
-              <td>{{ sismo.id }}</td>
+            <tr v-for="(sismo, index) in sismos" :key="sismo.id">
+              <td>{{ index + 1 }}</td>
               <td>{{ sismo.latitud }}</td>
               <td>{{ sismo.longitud }}</td>
               <td>{{ sismo.profundidad }}</td>
@@ -30,8 +28,15 @@
                   <router-link
                     :to="{ name: 'MapaFinal', params: { id: sismo.id } }"
                     class="btn btn-info"
-                    >Visualizar</router-link>
-
+                    >Visualizar</router-link
+                  >
+                  <button
+                    type="button"
+                    v-on:click="borrarSismo(sismo.id)"
+                    class="btn btn-danger"
+                  >
+                    Borrar
+                  </button>
                 </div>
               </td>
             </tr>
@@ -75,8 +80,11 @@ export default {
       fetch("http://localhost/sismos/?borrar=" + id)
         .then((respuesta) => respuesta.json())
         .then((datosRespuesta) => {
+          console.log("test", datosRespuesta);
           console.log(datosRespuesta);
-          location.reload();
+          console.log("test", datosRespuesta);
+          window.location.href = "listarsismos";
+        //document.location.reload(true);
         })
         .catch(console.log);
     },

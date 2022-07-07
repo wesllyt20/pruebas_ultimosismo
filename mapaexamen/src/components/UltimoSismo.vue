@@ -32,8 +32,8 @@
             <h5 class="text-primary m-0 font-weight-bold">
               {{ sismo.referencia }}
             </h5>
-            <br />
-            <b> Latitud: </b> {{ sismo.latitud }} <br />
+            <br>
+            <b> Latitud: </b> {{ sismo.latitud }} <br>
             <b> Longitud </b> {{ sismo.longitud }}
           </l-popup>
         </l-marker>
@@ -55,7 +55,7 @@ export default {
     LMap,
     LTileLayer,
     LMarker,
-    LPopup,
+    LPopup
   },
   data() {
     return {
@@ -63,7 +63,7 @@ export default {
       attribution:
         '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       zoom: 7,
-      center: [47.31322, -1.319482],
+      center: [],
       sismos2: [],
     };
   },
@@ -111,6 +111,8 @@ export default {
   border-radius: 100%;
   background: red;
   border-color: #fff;
+    width: 6rem;
+  height: 6rem;
   color: #fff;
   border-style: solid;
   float: left;

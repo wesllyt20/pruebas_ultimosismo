@@ -32,8 +32,8 @@
             <h5 class="text-primary m-0 font-weight-bold">
               {{ sismo.referencia }}
             </h5>
-            <br />
-            <b> Latitud: </b> {{ sismo.latitud }} <br />
+            <br>
+            <b> Latitud: </b> {{ sismo.latitud }} <br>
             <b> Longitud </b> {{ sismo.longitud }}
           </l-popup>
         </l-marker>
@@ -48,13 +48,14 @@
 <script>
 import axios from "axios";
 import L from "leaflet";
-import { LMap, LTileLayer, LMarker } from "vue2-leaflet";
+import { LMap, LTileLayer, LMarker, LPopup } from "vue2-leaflet";
 
 export default {
   components: {
     LMap,
     LTileLayer,
     LMarker,
+    LPopup
   },
   data() {
     return {
@@ -62,7 +63,7 @@ export default {
       attribution:
         '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       zoom: 7,
-      center: [47.31322, -1.319482],
+      center: [],
       sismos2: [],
     };
   },
@@ -115,6 +116,8 @@ export default {
 #inten {
   border-radius: 100%;
   background: red;
+  width: 6rem;
+  height: 6rem;
   border-color: #fff;
   color: #fff;
   border-style: solid;
