@@ -7,6 +7,7 @@ import ListarSismos from '../components/ListarSismos.vue'
 
 Vue.use(VueRouter)
 
+
 const routes = [
   {
     path: '/',
